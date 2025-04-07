@@ -1,0 +1,85 @@
+{
+    "seed": 12345,
+    "batch_size": 20,
+    "batch_size_val": 20,
+    
+    "seg":{
+        "weight_dice": 1.0,
+        "weight_dice-note": 1.0,
+        "weight_ce"  : 3.0,
+        "weight_ce-note"  : 0.1,
+        "damping":"constant",
+        "damping-note":["constant","恒定"]
+    },
+    "cons":{
+        "useEMA":true,
+
+        "weight": 5.0,
+        "weight-note": 0.5,
+        "damping":"constant",
+
+        "type":"cos"
+    },
+    "adv":{
+        "weight": 0.25,
+        "damping":"constant",
+        "damping-note":["reduce","默认衰减"]
+    },
+    "contrast":{
+        "weight": 0,
+        "weight-note": 0.04,
+        "damping":"constant",
+        "damping-note":["constant","默认恒定"]
+    },
+    "conn":{
+        "weight": 0,
+        "weight-note2": 0.04,
+        "weight-note": 0.1,
+        "damping":"constant",
+
+        "type": "entropy",
+        "type-note": ["ratio","entropy"]
+    },
+
+    "vessel3D": true,
+    "dePhase":0,
+
+    "ASL": {
+        "gamma_neg":0, 
+        "gamma_pos":0
+    },
+
+    "marginInfoNCE": false,
+
+    "pseudo_label": false,
+    "onlyMainObj": true,
+
+    "inputType": "Origin",
+
+    "datapath": "../DataSet-images/XCAD_FreeCOS5",
+    "datapathTrain":{
+        "img_unsup":"img",
+        
+        "bg_3D":"bg2",
+        "vessel_3D":"fake_grayvessel_bend",
+        "label_3D":"fake_gtvessel_bend",
+
+        "bg":"img",
+        "vessel":"fake_grayvessel_width",
+        "label":"fake_gtvessel_width"
+    },
+    "datapathTrain-note":{
+        "img_unsup":"img",
+        
+        "bg_3D":"bg_lzc",
+        "vessel_3D":"vessel3D_lzc",
+        "label_3D":"fake_gtvessel_width",
+
+        "bg":"img",
+        "vessel":"fake_grayvessel_width",
+        "label":"fake_gtvessel_width"
+    },
+    "logname":"./FreeCOS46",
+    "notes":"46: 测试余弦一致性正则化",
+    "version": "2025.02.28--01:46"
+}
